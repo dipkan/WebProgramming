@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Javascript Assignment</title>
+		<style>
+			table th, table td {
+				border: solid 3px red;
+			}
+			table.active {
+				border: solid 3px red;
+			}
+
+		</style>
+	</head>
+	<body>
+		<form id = "container">
+			How Many Rows Would You Like:
+			<select id = "rows" onchange="rowsChange()">
+				<option value="1" selected="selected">One</option>
+				<option value="2">Two</option>
+				<option value="3">Three</option>
+				<option value="4">Four</option>
+			</select>
+			<br>
+			<br>
+			How Many Columns Would You Like:
+			<select id = "columns" onchange="columnsChange()">
+				<option value="1" selected="selected">One</option>
+				<option value="2">Two</option>
+				<option value="3">Three</option>
+				<option value="4">Four</option>
+			</select>
+			<br>
+			<br>
+		</form>
+		<button type="button" onclick="inputTableCreate()">
+			Create
+		</button>
+		<br>
+		<br>
+		<div id="inputForm"></div>
+
+		<table id="outputTable">
+
+		</table>
+		<button type="button" onclick="outputTableCreate()">
+			Create Table
+		</button>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		<script type="text/javascript">
+			rowsChange = function() {
+				var rows = document.getElementById("rows").value;
+				return rows;
+			};
+
+			columnsChange = function() {
+				var cols = document.getElementById("columns").value;
+				return cols;
+			};
+
+			inputTableCreate = function() {
+				var rows = rowsChange();
+				var cols = columnsChange();
+				createTable(rows, cols);
+			};
+
+			createTable = function(rows, cols) {
+				var element = document.getElementById("inputForm");
+				while (element.firstChild) {
+					element.removeChild(element.firstChild);
+				}
+				var k = 0;
+				for (var i = 1; i <= rows; i++) {
+					for (var j = 1; j <= cols; j++) {
+						var input = document.createElement("input");
+						input.type = "text";
+						input.id = k;
+						element.appendChild(input);
+
+						k++;
+					}
+					element.appendChild(document.createElement("br"));
+				}
+
+			};
+
+			outputTableCreate = function() {
+				var rows = rowsChange();
+				var cols = columnsChange();
+				renderTable(rows, cols);
+			};
+
+			renderTable = function(rows, cols) {
+				var element = document.getElementById("outputTable");
+				while (element.firstChild) {
+					element.removeChild(element.firstChild);
+				}
+				$("#outputTable").addClass('active');
+				var k = 0;
+				for (var i = 1; i <= rows; i++) {
+					var row = "<tr>";
+					for (var j = 1; j <= cols; j++) {
+
+						var formCell = 'input#' + k;
+						var form = document.getElementById("formCell").value;
+						var colCell = "<td>" + form + "</td>";
+						//var colCell = "<td>" + document.getElementById("formCell").value + "</td>";
+						//var colCell = "<td>" + $(formCell).val() + "</td>";
+						row = row + colCell;
+						k++;
+					}
+					row = row + "</tr>";
+					element.appendChild(row);
+					//$("#outputTable").append(row);
+
+				}
+			};
+
+		</script>
+	</body>
+</html>
