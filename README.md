@@ -18,5 +18,5 @@ Optional functions
 
 Basically, have to use the base code provided and implement a chat functionality so if we logon to the system from two different browsers as two different users, you can chat between both the users.  Password and Usernames can be pre-defined. We can use filesystems or can use MySQL for storage of information. 
 
-
+log.html, index.php, style.css, post.php files are all for this project.
 
