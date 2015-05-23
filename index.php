@@ -11,14 +11,17 @@ header("Location: index.php"); //Redirect the user
 }
 
 
-
 function loginForm(){
 echo'
 <div id="loginform">
 <form action="index.php" method="post">
 <p>Please enter your name to continue:</p>
-<label for="name">Name:</label>
+<label for="name">Logon:</label>
 <input type="text" name="name" id="name" />
+</br>
+<label for = "password"> Password: </label>
+<input type = "text" password = "password" id = "password" />
+</br>
 <input type="submit" name="enter" id="enter" value="Enter" />
 </form>
 </div>
